@@ -72,6 +72,7 @@ module.exports = async (projectName) => {
       { name: 'npm install' }
     ]
   })
+  const spinner = ora('安装依赖中...')
   spinner.start()
   shell.exec(`cd ${url} && ${installWay}`)
   spinner.succeed()
