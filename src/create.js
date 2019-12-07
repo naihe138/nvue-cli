@@ -72,9 +72,11 @@ module.exports = async (projectName) => {
       { name: 'npm install' }
     ]
   })
-  const spinner = ora('安装依赖中...')
+  const spinner = ora('正在安装依赖中...\n')
   spinner.start()
   shell.exec(`cd ${url} && ${installWay}`)
   spinner.succeed()
-  chalkSuccess(`创建项目成功 请执行\n cd ${projectName}`)
+  chalkSuccess(`创建项目成功 请执行\n`)
+  chalkSuccess(`cd ${projectName} \n`)
+  chalkSuccess(`npm run dev`)
 }
