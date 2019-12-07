@@ -8,12 +8,10 @@ const downLoadGitRepo = require('download-git-repo')
 const chalk = require('chalk')
 
 let ncp = require('ncp')
-let { render } = require('consolidate').ejs
 
 // 转为promise格式
 const downLoadGit = promisify(downLoadGitRepo)
 ncp = promisify(ncp)
-render = promisify(render)
 // 获取当前文件目录
 const downLoadDirectory = `${process.env[process.platform === 'darwin' ? 'HOME': 'USERPROFILE']}/.template`
 
@@ -74,6 +72,8 @@ module.exports = async (projectName) => {
       { name: 'npm install' }
     ]
   })
+  spinner.start()
   shell.exec(`cd ${url} && ${installWay}`)
+  spinner.succeed()
   chalkSuccess(`创建项目成功 请执行\n cd ${projectName}`)
 }
