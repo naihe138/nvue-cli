@@ -6,12 +6,12 @@ const actionsMap = {
   create: {
     description: 'create project',
     alias: 'cr',
-    examples: ['nvue-cli create <template-name>']
+    examples: ['nvue create <template-name>']
   },
   config: {
     description: 'config info',
     alias: 'c',
-    examples: ['nvue-cli config get <k>', 'nvue-cli config set <k> <v>']
+    examples: ['nvue config get <k>', 'nvue config set <k> <v>']
   },
   '*': {
     description: 'command not found'
