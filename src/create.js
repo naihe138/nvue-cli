@@ -47,7 +47,6 @@ const wrapFetchAddLoading = (fn, message) => async (...args) => {
 }
 
 module.exports = async (projectName) => {
-
   // 选择版本
   let tags = await wrapFetchAddLoading(fetchTagsList, '正在获取版本号，请稍等...')('nvue')
   tags = tags.map(item => item.name)
@@ -58,9 +57,9 @@ module.exports = async (projectName) => {
     message: '请选择版本',
     choices: tags
   })
-  
+
   // 下载项目
-  const target = await wrapFetchAddLoading(downLoad, 'download template')(tag)
+  const target = await wrapFetchAddLoading(downLoad, '正在下载模板中，请稍等...')(tag)
 
   // 将下载的文件拷贝到当前执行命令的目录下
   let url = path.join(path.resolve(), projectName)
