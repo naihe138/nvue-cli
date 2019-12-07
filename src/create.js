@@ -6,9 +6,7 @@ const ora = require('ora')
 const inquirer = require('inquirer')
 const downLoadGitRepo = require('download-git-repo')
 const chalk = require('chalk')
-
 let ncp = require('ncp')
-
 // 转为promise格式
 const downLoadGit = promisify(downLoadGitRepo)
 ncp = promisify(ncp)
@@ -16,7 +14,6 @@ ncp = promisify(ncp)
 const downLoadDirectory = `${process.env[process.platform === 'darwin' ? 'HOME': 'USERPROFILE']}/.template`
 
 const chalkSuccess = (text) => console.log(chalk.green(text))
-const chalkError = (text) => console.log(chalk.red(text))
 
 // 获取版本信息列表
 const fetchTagsList = async (repo) => {
@@ -55,7 +52,6 @@ module.exports = async (projectName) => {
     message: '请选择版本',
     choices: tags
   })
-
   // 下载项目
   const target = await wrapFetchAddLoading(downLoad, '正在下载模板中，请稍等...')(tag)
 
